@@ -20,13 +20,13 @@ function handleSearch() {
 
 }
 
-function initContent(val) { // to do: rename val to something useful
+function initContent(blob) {
 
     results.innerHTML = '';
-    const pages = Math.ceil(val.totalResults/10);
+    const pages = Math.ceil(blob.totalResults/10);
     // to do: conditional to disable 'load more results' when last page is loaded (btn not yet added)
 
-    for (let movie of val.Search) {
+    for (let movie of blob.Search) {
         // to do: default image for the case of missing movie poster
         let li = document.createElement('li');
         li.dataset.imdbid = movie.imdbID;
@@ -34,8 +34,8 @@ function initContent(val) { // to do: rename val to something useful
     }
 
     // debugging
-    console.table(val.Search);
-    console.log(val);
+    console.table(blob.Search);
+    console.log(blob);
     console.log(`There are ${pages} pages for this query.`);
 
 }
