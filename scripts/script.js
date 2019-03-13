@@ -22,12 +22,19 @@ function handleSearch() {
 
 function initContent(blob) {
 
-    results.innerHTML = '';
+    results.innerHTML = ''; // reset content
+
+    if (blob.Response == 'False') {
+        console.log(`The movie you are looking for does not exist.`);
+        return;
+    }
+
     const pages = Math.ceil(blob.totalResults/10);
     // to do: conditional to disable 'load more results' when last page is loaded (btn not yet added)
 
     for (let movie of blob.Search) {
         // to do: default image for the case of missing movie poster
+        // to do: move into a separate function
         let li = document.createElement('li');
         li.dataset.imdbid = movie.imdbID;
         results.appendChild(li).innerHTML = `<img src="${movie.Poster}" height="75"> ${movie.Title}`; // <= REFACTOR
@@ -39,4 +46,3 @@ function initContent(blob) {
     console.log(`There are ${pages} pages for this query.`);
 
 }
-
