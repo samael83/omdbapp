@@ -20,11 +20,11 @@ function handleSearch() {
 
 }
 
-function initContent(val) {
+function initContent(val) { // to do: rename val to something useful
 
+    results.innerHTML = '';
     const pages = Math.ceil(val.totalResults/10);
     // to do: conditional to disable 'load more results' when last page is loaded (btn not yet added)
-    // to do: functionality to clear previous search results
 
     for (let movie of val.Search) {
         // to do: default image for the case of missing movie poster
@@ -37,5 +37,6 @@ function initContent(val) {
     console.table(val.Search);
     console.log(val);
     console.log(`There are ${pages} pages for this query.`);
+
 }
 
