@@ -1,5 +1,5 @@
 # OMDB App
-Front end development task, Based on the Open Movie Database API.
+Front end development task. UI implementation of the Open Movie Database API.
 
 ### Stack
-Vanilla.js
+[Vanilla.js](http://vanilla-js.com/)
