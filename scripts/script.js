@@ -37,6 +37,7 @@ function handleNext() {
         fetchNext();
         totalPages--;
     }
+    if (totalPages <= 1) more.classList.add('show-more-btn');
 }
 
 function initContent(movies) {
@@ -56,6 +57,7 @@ function initContent(movies) {
 
     // Prepare next page
     if (totalPages > 1) {
+        more.classList.remove('show-more-btn');
         fetchNext();        
     }
 
