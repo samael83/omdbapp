@@ -2,14 +2,14 @@
 const searchBtn = document.querySelector('#search-btn');
 const results = document.querySelector('ul');
 const input = document.querySelector('#search-input');
-const more = document.querySelector('span');
+const loadNext = document.querySelector('span');
 let currentPageData;
 let totalPages;
 let currentPage;
 
 // Events
 searchBtn.addEventListener('click', handleSearch);
-more.addEventListener('click', handleNext);
+loadNext.addEventListener('click', handleNext);
 
 // Functions
 function handleSearch() {
@@ -18,6 +18,7 @@ function handleSearch() {
 
     // Check for valid input
     if (input.value.length < 3) {
+        // TO DO: switch console.log to displayError();
         console.log('Please specify a search term that is at least 3 characters long.');
         return;
     };
@@ -37,14 +38,14 @@ function handleNext() {
         fetchNext();
         totalPages--;
     }
-    if (totalPages <= 1) more.classList.add('toggle-visibility');
+    if (totalPages <= 1) loadNext.classList.add('toggle-visibility');
 }
 
 function initContent(movies) {
     // Stop function execution if search returned no results
     if (movies.Response == 'False') {
-        console.log(`No results found, the movie you are looking for does not exist.`);
         // TO DO: switch console.log to displayError();
+        console.log(`No results found, the movie you are looking for does not exist.`);
         return;
     }
 
@@ -57,15 +58,9 @@ function initContent(movies) {
 
     // Prepare next page
     if (totalPages > 1) {
-        more.classList.remove('toggle-visibility');
+        loadNext.classList.remove('toggle-visibility');
         fetchNext();        
     }
-
-    // debugging **********************************************************************************************
-    console.table(movies.Search);
-    console.log(movies);
-    console.log(`There are ${totalPages} pages for this query.`);
-    // debugging **********************************************************************************************
 }
 
 function fetchNext() {
@@ -78,7 +73,7 @@ function renderList(movies) {
     for (let movie of movies.Search) {
         let li = document.createElement('li');
         li.innerHTML = `
-            <img src="${(movie.Poster == 'N/A') ? 'images/default_poster.jpg' : movie.Poster}"> 
+            <img class="poster" src="${(movie.Poster == 'N/A') ? 'images/default_poster.jpg' : movie.Poster}"> 
             <h3>${movie.Title}</h3>
             <p>${movie.Year}</p>
             <a href="http://www.imdb.com/title/${movie.imdbID}/" target="_blank">IMDB</a>

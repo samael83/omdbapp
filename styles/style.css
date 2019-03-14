@@ -1,6 +1,6 @@
 body, html {
     background-color: #fcfcfc;
-    font-family: 'Zilla Slab', serif;
+    font-family: 'lato', serif;
     font-weight: 300;
 }
 
@@ -26,13 +26,13 @@ header {
     height: 50px;
     width: 90%;
     margin: 0 auto;
-    background: white;
+    background: #ffffff;
     display: flex;
+    flex-direction: row;
 }
 
 #search-input {
     flex: 7;
-    background: transparent;
     padding: 0 0 0 20px;
     color: #757b88;
 }
@@ -68,6 +68,11 @@ header {
     align-items: center;
 }
 
+.poster {
+    max-width: 60%;
+    height: auto;
+}
+
 .load-more-btn {
     float: right;
     margin-right: 25px;
@@ -80,21 +85,12 @@ header {
     cursor: pointer;
 }
 
+.load-more-btn:hover {
+    -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+}
+
 .toggle-visibility {
     visibility: hidden;
-}
-
-.card-item > h2 {
-    font-size: 1.5rem;
-    padding: 40px 0;
-}
-
-.skill-container {
-    width: 75%;
-    height: 130px;
-    padding: 50px 0;
-    border-top: 1px solid #bbbbbb;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    justify-items: center;
 }
