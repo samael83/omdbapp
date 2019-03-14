@@ -37,7 +37,7 @@ body {
     }
   }
 
-  img {
-      height: 100px;
-      width: 40px;
-  }
+.module {
+    display: flex;
+    flex-direction: column;
+}
