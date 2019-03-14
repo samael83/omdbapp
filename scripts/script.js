@@ -3,6 +3,7 @@ const searchBtn = document.querySelector('#search-btn');
 const results = document.querySelector('ul');
 const input = document.querySelector('#search-input');
 const nextBtn = document.querySelector('#next-btn');
+const moviePage = document.querySelector('.movie-details');
 let movieList = [];
 let currentPageData;
 let totalPages;
@@ -11,6 +12,9 @@ let currentPage;
 // Events
 searchBtn.addEventListener('click', handleSearch);
 nextBtn.addEventListener('click', handleNext);
+moviePage.addEventListener('click', function() {
+    this.classList.add('toggle-visibility');
+});
 
 // Functions
 function handleSearch() {
@@ -95,4 +99,12 @@ function renderList(movies) {
 
 function renderMoviePage(val) {
     console.log(val);
+    moviePage.classList.remove('toggle-visibility');
+    moviePage.innerHTML = `
+        <img class="poster" src="${(val.Poster == 'N/A') ? 'images/default_poster.jpg' : val.Poster}"> 
+        <h3>${val.Title}</h3>
+        <p>${val.Plot}</p>
+        <p>${val.Genre}</p>
+        <p>${val.Director}</p>
+    `;
 }
