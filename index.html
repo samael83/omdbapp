@@ -21,12 +21,26 @@
 
     <body>
 
-        <input type="text">
-        <button>go</button>
+        <section class="main-stage">
 
-        <ul class="grid"></ul>
+            <header>
+                <div class="wrapper">
+                    <fieldset class="main-search">
+                        <input id="search-input" type="text" placeholder="Search for a movie title...">
+                        <input id="search-btn" type="submit" value="GO">       
+                    </fieldset>
+                </div>
+            </header>
 
-        <span class="show-more-btn">more >>></span>
+            <div class="wrapper">
+                <ul class="grid"></ul>
+                <span class="load-more-btn toggle-visibility">LOAD MORE</span>
+            </div>
+
+        </section>
+
+        <section class="movie-details">
+        </section>
 
         <!-- Scripts -->
         <script src="./scripts/script.js"></script>

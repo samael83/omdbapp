@@ -1,47 +1,100 @@
-body {
-    margin: 0 auto;
-    max-width: 56em;
-    padding: 1em 0;
-  }
-  
-  .grid {
-    /* Grid Fallback */
-    display: flex;
-    flex-wrap: wrap;
-    
-    /* Supports Grid */
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    grid-auto-rows: minmax(150px, auto);
-    grid-gap: 1em;
-  }
-  
-  .module {
-    /* Demo-Specific Styles */
-    background: #eaeaea;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 200px;
-    
-    /* Flex Fallback */
-    margin-left: 5px;
-    margin-right: 5px;
-    flex: 1 1 200px;
-  }
-  
-  /* If Grid is supported, remove the margin we set for the fallback */
-  @supports (display: grid) {
-    .module {
-      margin: 0;
-    }
-  }
-
-.module {
-    display: flex;
-    flex-direction: column;
+body, html {
+    background-color: #fcfcfc;
+    font-family: 'Zilla Slab', serif;
+    font-weight: 300;
 }
 
-.show-more-btn {
-    display: none;
+.wrapper {
+    max-width: 1240px;
+    margin: 0 auto;
+}
+
+.main-stage {
+    padding: 0 0 125px;
+}
+
+header {
+    width: 100%;
+    background-color: #1a1e27;
+    color: #ffffff;
+    font-size: 1.5vh;
+    padding: 20px 0;
+    position: fixed;
+}
+
+.main-search {
+    height: 50px;
+    width: 90%;
+    margin: 0 auto;
+    background: white;
+    display: flex;
+}
+
+#search-input {
+    flex: 7;
+    background: transparent;
+    padding: 0 0 0 20px;
+    color: #757b88;
+}
+
+#search-btn {
+    flex: 2;
+    background-color: tomato;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+.grid {
+    height: auto;
+    width: 100%;
+    padding: 135px 0 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+}
+
+.grid-cell {
+    height: 425px;
+    width: 330px;
+    float: left;
+    margin: 0 auto 50px;
+    padding: 10px;
+    border: 1px solid #e6e6e8;
+    background-color: #ffffff;
+    -webkit-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+    -moz-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.load-more-btn {
+    float: right;
+    margin-right: 25px;
+    height: 50px;
+    width: 225px;
+    background-color: tomato;
+    text-align: center;
+    line-height: 50px;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+.toggle-visibility {
+    visibility: hidden;
+}
+
+.card-item > h2 {
+    font-size: 1.5rem;
+    padding: 40px 0;
+}
+
+.skill-container {
+    width: 75%;
+    height: 130px;
+    padding: 50px 0;
+    border-top: 1px solid #bbbbbb;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-items: center;
 }

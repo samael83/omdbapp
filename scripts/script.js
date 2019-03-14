@@ -1,7 +1,7 @@
 // Globals
-const searchBtn = document.querySelector('button');
+const searchBtn = document.querySelector('#search-btn');
 const results = document.querySelector('ul');
-const input = document.querySelector('input');
+const input = document.querySelector('#search-input');
 const more = document.querySelector('span');
 let currentPageData;
 let totalPages;
@@ -37,14 +37,14 @@ function handleNext() {
         fetchNext();
         totalPages--;
     }
-    if (totalPages <= 1) more.classList.add('show-more-btn');
+    if (totalPages <= 1) more.classList.add('toggle-visibility');
 }
 
 function initContent(movies) {
     // Stop function execution if search returned no results
     if (movies.Response == 'False') {
         console.log(`No results found, the movie you are looking for does not exist.`);
-        //displayError();
+        // TO DO: switch console.log to displayError();
         return;
     }
 
@@ -57,7 +57,7 @@ function initContent(movies) {
 
     // Prepare next page
     if (totalPages > 1) {
-        more.classList.remove('show-more-btn');
+        more.classList.remove('toggle-visibility');
         fetchNext();        
     }
 
@@ -65,6 +65,7 @@ function initContent(movies) {
     console.table(movies.Search);
     console.log(movies);
     console.log(`There are ${totalPages} pages for this query.`);
+    // debugging **********************************************************************************************
 }
 
 function fetchNext() {
@@ -75,18 +76,15 @@ function fetchNext() {
 
 function renderList(movies) {
     for (let movie of movies.Search) {
-
         let li = document.createElement('li');
-
         li.innerHTML = `
             <img src="${(movie.Poster == 'N/A') ? 'images/default_poster.jpg' : movie.Poster}"> 
-            <p>${movie.Title}</p>
+            <h3>${movie.Title}</h3>
             <p>${movie.Year}</p>
             <a href="http://www.imdb.com/title/${movie.imdbID}/" target="_blank">IMDB</a>
         `;
         li.dataset.imdbid = movie.imdbID;
-        li.classList.add('module');
-
+        li.classList.add('grid-cell');
         results.appendChild(li);
     }
 }
