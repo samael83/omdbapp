@@ -98,7 +98,7 @@ function renderList(movies) {
             <img class="poster" src="${(movie.Poster == 'N/A') ? 'images/default_poster.jpg' : movie.Poster}"> 
             <h3>${movie.Title}</h3>
             <p>${movie.Year}</p>
-            <a href="http://www.imdb.com/title/${movie.imdbID}/" target="_blank">IMDB</a>
+            <a href="http://www.imdb.com/title/${movie.imdbID}/" target="_blank"><img src="./images/imdb.png" height="20" ></a>
         `;
         li.dataset.imdbid = movie.imdbID;
         li.classList.add('grid-cell');
@@ -117,8 +117,4 @@ function renderMoviePage(val) {
         <p>${val.Genre}</p>
         <p>${val.Director}</p>
     `;
-}
-
-function displayError() {
-
 }
