@@ -59,7 +59,7 @@ function initContent(movies) {
     // Stop function execution if search returned no results
     if (movies.Response == 'False') {
         errBox.innerHTML = `
-            <p class="err-message">Movie not found, check your spelling.</>
+            <p class="err-message">Movie not found.</>
         `;
         return;
     }
@@ -98,7 +98,7 @@ function renderList(movies) {
             <img class="poster" src="${(movie.Poster == 'N/A') ? 'images/default_poster.jpg' : movie.Poster}"> 
             <h3>${movie.Title}</h3>
             <p>${movie.Year}</p>
-            <a href="http://www.imdb.com/title/${movie.imdbID}/" target="_blank"><img src="./images/imdb.png" height="20" ></a>
+            <a href="http://www.imdb.com/title/${movie.imdbID}/" target="_blank"><img src="./images/imdb.png" height="18" ></a>
         `;
         li.dataset.imdbid = movie.imdbID;
         li.classList.add('grid-cell');
@@ -108,13 +108,15 @@ function renderList(movies) {
 }
 
 function renderMoviePage(val) {
-    console.log(val);
     moviePage.classList.remove('toggle-visibility');
     moviePage.innerHTML = `
-        <img class="poster" src="${(val.Poster == 'N/A') ? 'images/default_poster.jpg' : val.Poster}"> 
-        <h3>${val.Title}</h3>
-        <p>${val.Plot}</p>
-        <p>${val.Genre}</p>
-        <p>${val.Director}</p>
+        <div class="wrapper">
+            <img class="poster" src="${(val.Poster == 'N/A') ? 'images/default_poster.jpg' : val.Poster}"> 
+            <h3>${val.Title}</h3>
+            <h3>${val.Year}</h3>
+            <p>Summary: ${val.Plot}</p>
+            <p>Genre: ${val.Genre}</p>
+            <p>Directed by: ${val.Director}</p>
+        </div>
     `;
 }

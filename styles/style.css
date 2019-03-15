@@ -85,6 +85,17 @@ header {
     background-size: cover;
 }
 
+.grid-cell > h3 {
+    font-size: 20px;
+    font-weight: 400;
+    padding: 15px 0 5px 0;
+}
+
+.grid-cell > p {
+    font-size: 13px;
+    padding-bottom: 7px;
+}
+
 .load-more-btn {
     height: 50px;
     width: 225px;
