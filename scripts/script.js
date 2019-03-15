@@ -1,10 +1,11 @@
 // Globals
 const searchBtn = document.querySelector('#search-btn');
-const results = document.querySelector('ul');
+const results = document.querySelector('#grid-main');
 const input = document.querySelector('#search-input');
 const nextBtn = document.querySelector('#next-btn');
 const moviePage = document.querySelector('.movie-details');
 const mainStage = document.querySelector('.main-stage');
+const errBox = document.querySelector('.error');
 let movieList = [];
 let currentPageData;
 let totalPages;
@@ -24,11 +25,15 @@ window.addEventListener('keydown', function(e) {
 function handleSearch() {
     // Reset content
     results.innerHTML = '';
+    errBox.innerHTML = '';
+    currentPageData = {};
+    nextBtn.classList.add('toggle-visibility');
 
-    // Check for valid input
+    // Check for valid input, stop execution if input not valid
     if (input.value.length < 3) {
-        // TO DO: switch console.log to displayError();
-        console.log('Please specify a search term that is at least 3 characters long.');
+        errBox.innerHTML = `
+            <p class="err-message">Please specify a search term that is at least 3 charcters long.</>
+        `;
         return;
     };
 
@@ -53,8 +58,9 @@ function handleNext() {
 function initContent(movies) {
     // Stop function execution if search returned no results
     if (movies.Response == 'False') {
-        // TO DO: switch console.log to displayError();
-        console.log(`No results found, the movie you are looking for does not exist.`);
+        errBox.innerHTML = `
+            <p class="err-message">Movie not found, check your spelling.</>
+        `;
         return;
     }
 
@@ -111,4 +117,8 @@ function renderMoviePage(val) {
         <p>${val.Genre}</p>
         <p>${val.Director}</p>
     `;
+}
+
+function displayError() {
+
 }
