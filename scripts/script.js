@@ -4,6 +4,7 @@ const results = document.querySelector('ul');
 const input = document.querySelector('#search-input');
 const nextBtn = document.querySelector('#next-btn');
 const moviePage = document.querySelector('.movie-details');
+const mainStage = document.querySelector('.main-stage');
 let movieList = [];
 let currentPageData;
 let totalPages;
@@ -14,6 +15,9 @@ searchBtn.addEventListener('click', handleSearch);
 nextBtn.addEventListener('click', handleNext);
 moviePage.addEventListener('click', function() {
     this.classList.add('toggle-visibility');
+});
+window.addEventListener('keydown', function(e) {
+    if (e.key == 'Escape') moviePage.classList.add('toggle-visibility');
 });
 
 // Functions
