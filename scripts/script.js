@@ -1,4 +1,5 @@
 // Globals
+const body = document.querySelector('body');
 const searchBtn = document.querySelector('#search-btn');
 const results = document.querySelector('#grid-main');
 const input = document.querySelector('#search-input');
@@ -15,10 +16,12 @@ let currentPage;
 searchBtn.addEventListener('click', handleSearch);
 nextBtn.addEventListener('click', handleNext);
 moviePage.addEventListener('click', function() {
-    this.classList.add('toggle-visibility');
+    this.classList.add('hide-visibility');
+    body.classList.remove('hide-overflow');
 });
 window.addEventListener('keydown', function(e) {
-    if (e.key == 'Escape') moviePage.classList.add('toggle-visibility');
+    if (e.key == 'Escape') moviePage.classList.add('hide-visibility');
+    body.classList.remove('hide-overflow');
 });
 
 // Functions
@@ -27,7 +30,7 @@ function handleSearch() {
     results.innerHTML = '';
     errBox.innerHTML = '';
     currentPageData = {};
-    nextBtn.classList.add('toggle-visibility');
+    nextBtn.classList.add('hide-visibility');
 
     // Check for valid input, stop execution if input not valid
     if (input.value.length < 3) {
@@ -52,7 +55,7 @@ function handleNext() {
         fetchNext();
         totalPages--;
     }
-    if (totalPages <= 1) nextBtn.classList.add('toggle-visibility');
+    if (totalPages <= 1) nextBtn.classList.add('hide-visibility');
 }
 
 function initContent(movies) {
@@ -73,7 +76,7 @@ function initContent(movies) {
 
     // Prepare next page
     if (totalPages > 1) {
-        nextBtn.classList.remove('toggle-visibility');
+        nextBtn.classList.remove('hide-visibility');
         fetchNext();        
     }
 
@@ -108,7 +111,8 @@ function renderList(movies) {
 }
 
 function renderMoviePage(val) {
-    moviePage.classList.remove('toggle-visibility');
+    moviePage.classList.remove('hide-visibility');
+    body.classList.add('hide-overflow');
     moviePage.innerHTML = `
         <div class="wrapper">
             <img class="poster" src="${(val.Poster == 'N/A') ? 'images/default_poster.jpg' : val.Poster}"> 
